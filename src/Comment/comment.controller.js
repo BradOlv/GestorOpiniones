@@ -20,12 +20,11 @@ export const addComment = async (req, res) => {
 export const updateComment = async (req, res) => {
     try {
         const { id } = req.params;
-        const { uid, ...data } = req.body; // uid es quien intenta editar
+        const { uid, ...data } = req.body; 
 
         const comment = await Comment.findById(id);
         if (!comment) return res.status(404).json({ message: 'Comentario no encontrado' });
 
-        // VALIDACIÓN: ¿Es el dueño del comentario?
         if (comment.autor.toString() !== uid) {
             return res.status(401).json({ success: false, message: 'No puedes editar comentarios ajenos' });
         }
@@ -54,5 +53,26 @@ export const deleteComment = async (req, res) => {
         return res.status(200).json({ success: true, message: 'Comentario eliminado' });
     } catch (error) {
         return res.status(500).json({ success: false, message: 'Error al eliminar comentario' });
+    }
+};
+
+export const getComments = async (req, res) => {
+    const comments = await Comment.find();
+    res.status(200).json({ success: true, comments });
+};
+
+// Obtener comentarios de una publicación específica
+export const getCommentsByPost = async (req, res) => {
+    try {
+        const { postId } = req.params;
+        const comments = await Comment.find({ post: postId });
+
+        return res.status(200).json({
+            success: true,
+            total: comments.length,
+            comments
+        });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: 'Error al obtener comentarios' });
     }
 };

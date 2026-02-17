@@ -23,7 +23,7 @@ export const dbConnection = async () => {
 
         // Conexión principal
         // Usa process.env.URI_MONGO para que coincida con tu .env
-        await mongoose.connect(process.env.URI_MONGO, {
+        await mongoose.connect(process.env.URI_MONGODB, {
             serverSelectionTimeoutMS: 5000,
             maxPoolSize: 10,
         });

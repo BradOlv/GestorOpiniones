@@ -21,7 +21,7 @@ export const savePost = async (req, res) => {
 export const updatePost = async (req, res) => {
     try {
         const { id } = req.params; 
-        const { uid, ...data } = req.body; // 'uid' es el ID del usuario que intenta editar
+        const { uid, ...data } = req.body; 
 
         const post = await Post.findById(id);
         
@@ -46,8 +46,8 @@ export const updatePost = async (req, res) => {
 // 3. Eliminar publicación (Validación de autoría)
 export const deletePost = async (req, res) => {
     try {
-        const { id } = req.params; // ID del post a borrar
-        const { uid } = req.body; // ID del usuario logueado (quien intenta borrar)
+        const { id } = req.params; 
+        const { uid } = req.body; 
 
         const post = await Post.findById(id);
 
@@ -70,5 +70,35 @@ export const deletePost = async (req, res) => {
 
     } catch (error) {
         return res.status(500).json({ success: false, message: 'Error al eliminar' });
+    }
+};
+
+// Listar todas las publicaciones
+export const getPosts = async (req, res) => {
+    try {
+        const posts = await Post.find();
+        return res.status(200).json({
+            success: true,
+            posts
+        });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: 'Error al obtener posts' });
+    }
+};
+
+// Buscar un post por ID
+export const getPostById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const post = await Post.findById(id);
+        
+        if (!post) return res.status(404).json({ message: 'Publicación no encontrada' });
+
+        return res.status(200).json({
+            success: true,
+            post
+        });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: 'Error al buscar el post' });
     }
 };
