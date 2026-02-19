@@ -1,0 +1,124 @@
+/* Estilos para crear opinión */
+
+#crear-post {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+#crear-post h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,250,252,0.95));
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.1);
+}
+
+.post-form label {
+    display: block;
+    font-weight: 700;
+    color: #1a1f3a;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.post-form input,
+.post-form textarea {
+    padding: 14px;
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.post-form input::placeholder,
+.post-form textarea::placeholder {
+    color: #999;
+}
+
+.post-form input:focus,
+.post-form textarea:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.post-form textarea {
+    resize: vertical;
+    min-height: 200px;
+    max-height: 400px;
+    line-height: 1.6;
+}
+
+.char-count {
+    font-size: 0.8rem;
+    color: #999;
+    display: block;
+    text-align: right;
+    margin-top: -15px;
+}
+
+.submit-btn {
+    padding: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    #crear-post {
+        max-width: 100%;
+    }
+
+    .post-form {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .post-form textarea {
+        min-height: 150px;
+    }
+}

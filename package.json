@@ -7,7 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "frontend": "node server-frontend.js",
+    "dev:frontend": "nodemon server-frontend.js"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,117 @@
+/* Estilos para botones de navegación */
+
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(167, 139, 250, 0.05));
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.button:hover::before {
+    left: 100%;
+}
+
+.button-image {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.button-image img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1);
+}
+
+.button-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.button:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(167, 139, 250, 0.15));
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateX(5px);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
+}
+
+.button:hover .button-image {
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+}
+
+.button:hover .button-text {
+    color: #fff;
+}
+
+.button:active {
+    transform: translateX(2px);
+}
+
+/* Estilos específicos por botón */
+.button.logout:hover {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(252, 165, 165, 0.1));
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.button.logout:hover .button-image {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+.button.crear:hover .button-image {
+    background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .button {
+        flex-direction: row;
+        padding: 12px 16px;
+        flex: 1;
+        min-width: 120px;
+        margin-bottom: 8px;
+    }
+
+    .button-image {
+        width: 32px;
+        height: 32px;
+    }
+
+    .button-text {
+        font-size: 0.75rem;
+    }
+}

@@ -1,0 +1,152 @@
+/* Estilos globales para la aplicación */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f8f9ff 0%, #f0e3ff 100%);
+    min-height: 100vh;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 0;
+    overflow: hidden;
+}
+
+/* Barra de navegación */
+#nav {
+    height: 100vh;
+    background: linear-gradient(180deg, #1a1f3a 0%, #2d2e4f 100%);
+    box-shadow: 6px 0 30px rgba(0, 0, 0, 0.15);
+    padding: 25px 15px;
+    overflow-y: auto;
+    position: relative;
+}
+
+#nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+}
+
+#nav::-webkit-scrollbar {
+    width: 8px;
+}
+
+#nav::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+#nav::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8b5cf6, #a78bfa);
+    border-radius: 10px;
+}
+
+#nav::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #a78bfa, #c4b5fd);
+}
+
+/* Contenedor principal */
+#container {
+    height: 100vh;
+    background: linear-gradient(135deg, #fefefe 0%, #f8fafc 50%, #f0e3ff 100%);
+    padding: 30px 40px;
+    overflow-y: auto;
+    position: relative;
+}
+
+#container::-webkit-scrollbar {
+    width: 10px;
+}
+
+#container::-webkit-scrollbar-track {
+    background: rgba(139, 92, 246, 0.05);
+}
+
+#container::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8b5cf6 0%, #a78bfa 100%);
+    border-radius: 10px;
+}
+
+#container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #7c3aed 0%, #8b5cf6 100%);
+}
+
+#container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 250px;
+    background: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+    border-radius: 0 0 50% 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Estilos de textos */
+h1, h2, h3 {
+    color: #1a1f3a;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Responsive para tablets */
+@media (max-width: 1024px) {
+    #app {
+        grid-template-columns: 250px 1fr;
+    }
+
+    #container {
+        padding: 20px 25px;
+    }
+}
+
+/* Responsive para mobile */
+@media (max-width: 768px) {
+    #app {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    #nav {
+        height: auto;
+        display: flex;
+        gap: 10px;
+        padding: 15px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    #container {
+        height: auto;
+        min-height: 100vh;
+        padding: 15px 20px;
+    }
+}
